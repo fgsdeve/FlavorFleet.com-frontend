@@ -94,7 +94,7 @@ useEffect(() => {
             name="addressLine1"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel> address Line 1 </FormLabel>
+                <FormLabel> Address Line 1 </FormLabel>
                 <FormControl>
                   <input {...field} className="bg-white" />
                 </FormControl>

@@ -10,7 +10,7 @@ export const useGetMyUser = () => {
 
   const getMyUserRequest = async (): Promise<User> => {
     const accessToken = await getAccessTokenSilently();
-
+try{
     const response = await fetch(`${API_BASE_URL}/api/my/user`, {
       method: "GET",
       headers: {
@@ -19,12 +19,17 @@ export const useGetMyUser = () => {
       },
     });
 
+    
     if (!response.ok) {
-      throw new Error("Failed to fetch user");
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    return response.json();
-  };
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching user:', error);
+    throw error;
+  }
+};
 
   const { 
     data: 
