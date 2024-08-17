@@ -8,22 +8,31 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const useCreateMyRestaurant = () => {
     const { getAccessTokenSilently } = useAuth0();
   
-    const createMyRestaurantRequest = async (restaurantFormData: FormData) : Promise<Restaurant> => {
-      const accessToken = await getAccessTokenSilently();
-  
-      const response = await fetch(`${API_BASE_URL}/api/my/restaurant`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: restaurantFormData,
-      });
-  
-      if (!response.ok) {
-        throw new Error("Failed to create restaurant");
+    const createMyRestaurantRequest = async (restaurantFormData: FormData): Promise<Restaurant> => {
+      try {
+        const accessToken = await getAccessTokenSilently();
+    
+        console.log("Sending data:", restaurantFormData);
+    
+        const response = await fetch(`${API_BASE_URL}/api/my/restaurant`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: restaurantFormData,
+        });
+    
+        if (!response.ok) {
+          const errorBody = await response.json();
+          console.error(`Failed to create restaurant: ${response.status}`, errorBody);
+          throw new Error(`Failed to create restaurant: ${response.status}`);
+        }
+    
+        return await response.json();
+      } catch (error) {
+        console.error("Error in createMyRestaurantRequest:", error);
+        throw error;
       }
-  
-      return response.json();
     };
   
     const {

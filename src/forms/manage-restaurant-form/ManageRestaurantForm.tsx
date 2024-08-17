@@ -89,7 +89,9 @@ const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
     if (formDataJson.imageFile) {
       formData.append("imageFile", formDataJson.imageFile);
     }
-
+    formData.forEach((value, key) => {
+      console.log(`${key}: ${value}`);
+    })
     onSave(formData);
   };
 
