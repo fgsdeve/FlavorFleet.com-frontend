@@ -3,7 +3,6 @@ import { Label } from "@radix-ui/react-label";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
 import { ChangeEvent } from "react";
 import { Button } from "./ui/button";
-import { spawn } from "child_process";
 
 type Props = {
   onChange: (cuisines: string[]) => void;
@@ -50,7 +49,7 @@ const CuisineFilter = ({
           .map((cuisine) => {
             const isSelected = selectCuisines.includes(cuisine);
             return (
-              <div className="flex">
+              <div className="flex" key={cuisine}>
                 <input
                   id={`cuisine_${cuisine}`}
                   type="checkbox"
