@@ -48,15 +48,15 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className={`flex items-center gap-3 
+        className={`flex items-center gap-4
             justify-between flex-row border-2 
-            rounded-full p-3  
+            rounded-lg p-3  
             ${form.formState.errors.searchQuery && "border-red-500"}`}
       >
         <Search
           strokeWidth={2.5}
           size={30}
-          className="ml-1 text-green-500 hidden md:block"
+          className="ml-2 text-green-500 hidden md:block"
         />
         <FormField
           control={form.control}
@@ -66,7 +66,7 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
               <FormControl>
                 <Input
                   {...field}
-                  className="border-none shadow-none text-xl focus-visible:ring-2"
+                  className="border-none shadow-none text-base focus-visible:ring-2"
                   placeholder={placeHolder}
                   ariel-label="Search input"
                 />
@@ -78,11 +78,11 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
           onClick={handleReset}
           type="button"
           variant="outline"
-          className="rounded-full"
+          className="rounded-md px-4"
         >
           Clear
         </Button>
-        <Button type="submit" className="rounded-full bg-green-500">
+        <Button type="submit" className="rounded-md bg-green-500 px-6 text-white">
           Search
         </Button>
       </form>

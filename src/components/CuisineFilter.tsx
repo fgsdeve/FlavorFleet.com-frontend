@@ -31,12 +31,12 @@ const CuisineFilter = ({
   const handleCuisinesReset = () => onChange([]);
   return (
     <>
-      <div className="flex justify-between items-center  px-2">
-        <div className="text-md font-semibold mb-2">
+      <div className="flex justify-between items-center px-2">
+        <div className="text-lg font-semibold mb-2">
           Filter By Cuisines
           <div
             onClick={handleCuisinesReset}
-            className="text-sm font-semibold mb-2 underline curso-point text-green-500"
+            className="text-sm font-semibold underline cursor-pointer text-green-500"
           >
             Reset Filters
           </div>
