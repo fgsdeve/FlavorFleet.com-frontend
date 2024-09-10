@@ -22,7 +22,7 @@ export type Restaurant = {
   cuisines: string[];
   menuItems: MenuItem[];
   imageUrl: string;
-  lastUpdated: Date;
+  lastUpdated: string;
 };
 
 export type RestaurantSearchResponse = {

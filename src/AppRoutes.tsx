@@ -21,18 +21,20 @@ const AppRoutes = () => {
       <Route path="/auth-callback" element={<AuthCallBackPage />} />
       <Route
         path="/search/:city"
-        element={<Layout showHero={false}>
-          <SearchPage/>
-        </Layout>}
+        element={
+          <Layout showHero={false}>
+            <SearchPage />
+          </Layout>
+        }
       />
-       <Route
+      <Route
         path="/detail/:restaurantId"
         element={
           <Layout showHero={false}>
-          <DetailPage/>
-        </Layout>}
+            <DetailPage />
+          </Layout>
+        }
       />
-
 
       <Route element={<ProtectedRoute />}>
         <Route
